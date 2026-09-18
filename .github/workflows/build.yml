@@ -17,5 +17,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build with Gradle
-      run: chmod +x gradlew && ./gradlew bundleRelease
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Build Bundle
+      run: gradle bundleRelease
