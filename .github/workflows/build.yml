@@ -17,8 +17,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
-
-    - name: Build Bundle
-      run: gradle bundleRelease
+    - name: Find and Build Gradle
+      run: |
+        GRADLE_DIR=$(find . -maxdepth 2 -name "build.gradle*" -exec dirname {} \; | head -n 1)
+        echo "Building in directory: $GRADLE_DIR"
+        cd "$GRADLE_DIR"
+        if [ -f "./gradlew" ]; then
+          chmod +x gradlew
+          ./gradlew bundleRelease
+        else
+          gradle bundleRelease
+        fi
