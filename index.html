@@ -216,8 +216,9 @@
 
             const systemPrompt = "You are a wise ancient Indian sage, astrologer (Pandit), and intuitive mystic of the year 2026. When the user interacts, deeply sense their current emotional state, thoughts, and destiny for 2026. Provide a personalized, profound, wise, and comforting astrological/intuitive future prediction in the requested language (Marathi, Hindi, or English). Keep it concise (within 30-38 words) so it fits nicely inside a smartwatch screen simulation.";
             
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const apiKey = "AQ.Ab8RN6JKSmzNejQx7UBWJ2hCbpll4E19BRGipWjZ8G_Q-EaCDg"; 
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
             const payload = {
                 contents: [{ parts: [{ text: userContextPrompt }] }],
@@ -306,10 +307,11 @@
                         }
                     }
                 },
-                model: "gemini-2.5-flash-preview-tts"
+                model: "gemini-2.5-flash"
             };
 
-            const ttsApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=`;
+            const ttsApiKey = "AQ.Ab8RN6JKSmzNejQx7UBWJ2hCbpll4E19BRGipWjZ8G_Q-EaCDg";
+            const ttsApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${ttsApiKey}`;
 
             try {
                 const response = await fetch(ttsApiUrl, {
